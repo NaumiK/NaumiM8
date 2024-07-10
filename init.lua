@@ -8,5 +8,5 @@ require("config.settings")
 require("plug_conf.whichkey")
 require("plug_conf.dashboard")
 
-require("plug_conf.lsp")
-require("plug_conf.cmp")
+-- require("plug_conf.lsp")
+-- require("plug_conf.cmp")

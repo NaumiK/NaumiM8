@@ -1,41 +1,50 @@
 return {
-{ 
-  'nvim-treesitter/nvim-treesitter',
-  opts = {
-    ensure_installed = {
-    "lua",
-    "c",
-    "cpp",
-    },
-
-    sync_install = false,
-    auto_install = true,
-    highlight = {
-      enable = true,
-    },
+{
+  "VonHeikemen/lsp-zero.nvim",
+  dependencies = {
+    'neovim/nvim-lspconfig',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/nvim-cmp',
+    'L3MON4D3/LuaSnip',
   },
+  config = function()
+    local lsp_zero = require('lsp-zero')
+    lsp_zero.on_attach(function(_, bufnr)
+      lsp_zero.default_keymaps({buffer = bufnr})
+    end)
+  end
 },
-{ 'neovim/nvim-lspconfig' },
--- Autocomplete support
-{ 'hrsh7th/cmp-nvim-lsp' },
-{ 'hrsh7th/cmp-buffer' },
-{ 'hrsh7th/cmp-path' },
-{ 'hrsh7th/cmp-cmdline' },
-{ 'hrsh7th/nvim-cmp' },
 {
   'williamboman/mason.nvim',
-  opts = {
-    ui = {
-    icons = {
-        package_installed = "✓",
-        package_pending = "➜",
-        package_uninstalled = "✗"
-      }
-    }
-  }
+  opts = {},
 },
 {
-  "HiPhish/rainbow-delimiters.nvim",
-  dependencies = { "nvim-treesitter/nvim-treesitter", }
-}
+  'williamboman/mason-lspconfig.nvim',
+  dependencies = {
+    "Civitasv/cmake-tools.nvim",
+    "VonHeikemen/lsp-zero.nvim"
+  },
+  opts = {
+    ensure_installed = { "clangd", "lua_ls" },
+    handlers = {
+      function(server_name)
+        require('lspconfig')[server_name].setup{}
+      end,
+      clangd = function()
+        require('lspconfig').clangd.setup{
+          single_file_support = true,
+          flags = {
+            debounce_text_changes = 150,
+          },
+          on_new_config = function(new_config, _)
+              local status, cmake = pcall(require, "cmake-tools")
+              if status then
+                  cmake.clangd_on_new_config(new_config)
+              end
+          end,
+        }
+      end
+    }
+  },
+},
 }
