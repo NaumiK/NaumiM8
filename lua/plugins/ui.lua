@@ -18,12 +18,6 @@ return {
   opts = {}
 },
 {
-  'nvimdev/dashboard-nvim',
-  event = 'VimEnter',
-  opts = {},
-  dependencies = { {'nvim-tree/nvim-web-devicons'}}
-},
-{
   'romgrk/barbar.nvim',
    dependencies = {
     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
