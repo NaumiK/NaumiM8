@@ -4,13 +4,17 @@ return {
   version="*",
   lazy=true,
   keys = {
-    {"<leader>nn", "<CMD>NvimTreeToggle<CR>", mode={ "n" }},
-    {"<leader>nf", "<CMD>NvimTreeFocus<CR>",  mode={ "n" }},
+    {"<leader>nn", "<CMD>NvimTreeToggle<CR>", mode={ "n" }, desc="Tree toggle"},
+    {"<leader>nf", "<CMD>NvimTreeFocus<CR>",  mode={ "n" }, desc="Tree focus" },
   },
+  cmd = {"NvimTreeOpen", "NvimTreeFocus", "NvimTreeToggle" },
+  init = function () require("which-key").register {["<leader>n"] = {name = "File tree"}} end,
   dependencies = {
     "nvim-tree/nvim-web-devicons",
+    "folke/which-key.nvim",
   },
-  opts = {},
+  opts = {
+  },
 },
 {
   "folke/which-key.nvim",
@@ -26,11 +30,15 @@ return {
    dependencies = {
     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    "folke/which-key.nvim",
    },
-   init = function() vim.g.barbar_auto_setup = false end,
-   opts = {},
+  init = function()
+     vim.g.barbar_auto_setup = false
+     require('which-key').register { ["<leader>b"] = { name = "Buffer order", } }
+   end,
+  opts = {},
   lazy = false,
-   keys = {
+  keys = {
      -- Goto prev/next
      {"<A-,>", "<CMD>BufferPrevious<CR>",                 mode={ "n" }},
      {"<A-.>", "<CMD>BufferNext<CR>",                     mode={ "n" }},
@@ -53,10 +61,10 @@ return {
      -- Close buffer
      {"<A-c>", "<CMD>BufferClose<CR>",                    mode={ "n" }},
      -- Sort buffers
-     {"<leader>bn", "<CMD>BufferOrderByBufferNumber<CR>", mode={ "n" }},
-     {"<leader>bd", "<CMD>BufferOrderByDirectory<CR>",    mode={ "n" }},
-     {"<leader>bl", "<CMD>BufferOrderByLanguage<CR>",     mode={ "n" }},
-     {"<leader>bw", "<CMD>BufferOrderByWindowNumber<CR>", mode={ "n" }},
+     {"<leader>bn", "<CMD>BufferOrderByBufferNumber<CR>", mode={ "n" }, desc = "Number"   },
+     {"<leader>bd", "<CMD>BufferOrderByDirectory<CR>",    mode={ "n" }, desc = "Directory"},
+     {"<leader>bl", "<CMD>BufferOrderByLanguage<CR>",     mode={ "n" }, desc = "Language "},
+     {"<leader>bw", "<CMD>BufferOrderByWindowNumber<CR>", mode={ "n" }, desc = "Window"   },
    },
    version = '^1.0.0', -- optional: only update when a new 1.x version is released
 },
