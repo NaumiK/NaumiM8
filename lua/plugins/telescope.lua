@@ -1,12 +1,12 @@
 return {
     "nvim-telescope/telescope.nvim",
     keys = {
-        { "<C-t>", "<CMD>Telescope<CR>",                                                       mode = { "n", "v", "i" } },
-        { "<C-p>", "<CMD>Telescope find_files<CR>",                                            mode = { "n", "v", "i" } },
-        { "<C-l>", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", mode = { "n", "v", "i" } },
-        { "<C-o>", "<CMD>Telescope lsp_document_symbols<CR>",                                  mode = { "n", "v", "i" } },
-        { "<C-s>", "<CMD>Telescope grep_string<CR>",                                           mode = { "n", "i" } },
-        { "<C-m>", "<CMD>Telescope keymaps<CR>",                                               mode = { "n", "v", "i" },},
+        { "<leader>tt", "<CMD>Telescope<CR>",                                                       mode = { "n"  } },
+        { "<leader>tp", "<CMD>Telescope find_files<CR>",                                            mode = { "n"  } },
+        { "<leader>tl", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", mode = { "n"  } },
+        { "<leader>to", "<CMD>Telescope lsp_document_symbols<CR>",                                  mode = { "n"  } },
+        { "<leader>ts", "<CMD>Telescope grep_string<CR>",                                           mode = { "n"  } },
+        { "<leader>tm", "<CMD>Telescope keymaps<CR>",                                               mode = { "n"  } },
     },
     cmd = {
         "Telescope",

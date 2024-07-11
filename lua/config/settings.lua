@@ -12,6 +12,4 @@ vim.opt.termguicolors = true
 vim.opt.encoding = 'utf8'
 vim.opt.fileencoding = 'utf8'
 
-vim.g.gruvbox_contrast_dark = 'hard'
-vim.opt.background = "dark"
-vim.cmd.colorscheme "gruvbox-high-contrast"
+vim.cmd.colorscheme "carbonfox"
