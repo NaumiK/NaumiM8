@@ -16,6 +16,11 @@ return {
         { "nvim-telescope/telescope-live-grep-args.nvim" },
     },
     lazy=true,
+    init = function()
+      require("which-key").register {
+        ["<leader>t"] = {name = "Telescope"},
+      }
+    end,
     config = function()
         local telescope = require("telescope")
         local lga_actions = require("telescope-live-grep-args.actions")
