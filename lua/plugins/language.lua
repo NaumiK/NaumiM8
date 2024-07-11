@@ -1,6 +1,7 @@
 return {
 {
   "VonHeikemen/lsp-zero.nvim",
+  branch = "v3.x",
   dependencies = {
     'neovim/nvim-lspconfig',
     'hrsh7th/cmp-nvim-lsp',
@@ -47,4 +48,11 @@ return {
     }
   },
 },
+{
+  'windwp/nvim-autopairs',
+   event = "InsertEnter",
+   opts = {
+     disable_filetype = { "TelescopePrompt" , "vim" }
+   }
+}
 }
