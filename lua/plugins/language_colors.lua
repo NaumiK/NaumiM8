@@ -1,5 +1,5 @@
 return {
-{ 'iibe/gruvbox-high-contrast' },
+{ 'iibe/gruvbox-high-contrast', enabled=false },
 {
   "EdenEast/nightfox.nvim",
   opts = {
