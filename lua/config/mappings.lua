@@ -8,3 +8,5 @@ vim.keymap.set("v", "<S-Tab>", "<gv")
 
 -- dismiss highlight
 vim.keymap.set("n", "<ESC>", "<CMD>noh<CR>")
+-- escape terminal mode
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")
