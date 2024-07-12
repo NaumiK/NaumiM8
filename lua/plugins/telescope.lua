@@ -17,9 +17,7 @@ return {
     },
     lazy=true,
     init = function()
-      require("which-key").register {
-        ["<leader>t"] = {name = "Telescope"},
-      }
+      require("which-key").add { "<leader>t", group="Telescope" }
     end,
     config = function()
         local telescope = require("telescope")
