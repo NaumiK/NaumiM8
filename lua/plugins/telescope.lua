@@ -12,8 +12,9 @@ return {
         "Telescope",
     },
     dependencies = {
-        { "nvim-lua/plenary.nvim" },
-        { "nvim-telescope/telescope-live-grep-args.nvim" },
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        "nvim-telescope/telescope-frecency.nvim",
     },
     lazy=true,
     init = function()
@@ -60,5 +61,6 @@ return {
             }
         }
         telescope.load_extension("live_grep_args")
+        telescope.load_extension("frecency")
     end
   }
