@@ -31,7 +31,7 @@ return {
     "VonHeikemen/lsp-zero.nvim"
   },
   opts = {
-    ensure_installed = { "clangd", "lua_ls" },
+    ensure_installed = { "clangd", "lua_ls", "cmake" },
     handlers = {
       function(server_name)
         require('lspconfig')[server_name].setup {}

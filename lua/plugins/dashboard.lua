@@ -1,48 +1,3 @@
--- return {
--- {
---   'nvimdev/dashboard-nvim',
---   enabled = true,
---   event = 'VimEnter',
---   dependencies = { 'nvim-tree/nvim-web-devicons' },
---   opts = {
---     theme = "hyper",
---     config = {
---       header = {
---         " ⠀⠀⠀⣤⣤⣤⣤⠀⠀⣤⠛⣤⠀⣤⣤⣤⣤⠀⠀⠀",
---         "   ⠀⠛⣤⠀⠀⠀⠀⣿⣤⠀⠀⠀⠀⣤⠛⠀  ",
---         "   ⠀⠀⠀⣿⠀⠀⣿⠛⣤⣿⠀⠀⣿⠀⠀⠀  ",
---         "   ⠀⣤⠛⠀⠀⠀⠀⠛⣿⠀⠀⠀⠀⠛⣤⠀  ",
---         " ⠀⠀⠀⠛⠛⠛⠛⠀⠛⣤⠛⠀⠀⠛⠛⠛⠛⠀⠀⠀",
---       },
---       footer = {"∅"},
---       shortcut = {
---         { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
---         {
---           icon = ' ',
---           desc = 'Files',
---           group = '@label',
---           action = 'Telescope find_files',
---           key = 'f',
---         },
---         {
---           icon  = 'τ ',
---           group = "@string",
---           desc = "Telescope",
---           key = 't',
---           action = "Telescope",
---         },
---         {
---           icon = '🕮   ',
---           desc = "KeyMap",
---           group = "@constant",
---           key = 'm',
---           action = "Telescope keymaps"
---         }
---       },
---     }
---   },
--- }
--- }
 return {
     'goolord/alpha-nvim',
     dependencies = {
@@ -52,17 +7,29 @@ return {
     opts = function ()
       local dashboard = require("alpha.themes.dashboard")
       local logo =  [[
-            ⠀⠀⠀⣤⣤⣤⣤⠀⠀⣤⠛⣤⠀⣤⣤⣤⣤⠀⠀⠀
-              ⠀⠛⣤⠀⠀⠀⠀⣿⣤⠀⠀⠀⠀⣤⠛⠀  
-              ⠀⠀⠀⣿⠀⠀⣿⠛⣤⣿⠀⠀⣿⠀⠀⠀  
-              ⠀⣤⠛⠀⠀⠀⠀⠛⣿⠀⠀⠀⠀⠛⣤⠀  
-            ⠀⠀⠀⠛⠛⠛⠛⠀⠛⣤⠛⠀⠀⠛⠛⠛⠛⠀⠀⠀
+⠀⠀⠀⣤⣤⣤⣤⠀⠀⣤⠛⣤⠀⣤⣤⣤⣤⠀⠀⠀
+  ⠀⠛⣤⠀⠀⠀⠀⣿⣤⠀⠀⠀⠀⣤⠛⠀  
+  ⠀⠀⠀⣿⠀⠀⣿⠛⣤⣿⠀⠀⣿⠀⠀⠀  
+  ⠀⣤⠛⠀⠀⠀⠀⠛⣿⠀⠀⠀⠀⠛⣤⠀  
+⠀⠀⠀⠛⠛⠛⠛⠀⠛⣤⠛⠀⠀⠛⠛⠛⠛⠀⠀⠀
       ]]
       dashboard.section.header.val = vim.split(logo, "\n")
       dashboard.section.buttons.val = {
-        dashboard.button("<leader>tp", " " .. " Find file", "<CMD>Telescope find_files<CR>"),
-        dashboard.button("<leader>tg", " " .. " Find text",  "<CMD>Telescope grep_string<CR>"),
+        dashboard.button("f", " " .. "Find file", "<CMD> Telescope find_files <CR>"),
+        dashboard.button("g", " " .. "Live grep", "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>"),
+        dashboard.button("s", " " .. "Grep string", "<CMD> Telescope grep_string <CR>"),
+        dashboard.button("p", " " .. "Package manager ", "<CMD> Lazy <CR>"),
+        dashboard.button("u", "⟳ " .. "Update packages", "<CMD> Lazy update <CR>"),
+        dashboard.button("m", "🖮 " .. "Mapping", "<CMD> Telescope keymaps <CR>"),
+        dashboard.button("q", " " .. "Quit", "<CMD> qa <CR>"),
       }
+      for _, button in ipairs(dashboard.section.buttons.val) do
+        button.opts.hl = "AlphaButtons"
+        button.opts.hl_shortcut = "AlphaShortcut"
+      end
+      dashboard.section.header.opts.hl = "AlphaHeader"
+      dashboard.section.buttons.opts.hl = "AlphaButtons"
+      dashboard.section.footer.opts.hl = "AlphaFooter"
       return dashboard
     end,
     config = function(_, dashboard)

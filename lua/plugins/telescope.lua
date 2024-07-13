@@ -2,7 +2,7 @@ return {
     "nvim-telescope/telescope.nvim",
     keys = {
         { "<leader>tt", "<CMD>Telescope<CR>",                                                       mode = { "n"  }, desc = "Global"},
-        { "<leader>tp", "<CMD>Telescope find_files<CR>",                                            mode = { "n"  }, desc = "Find files"},
+        { "<leader>tf", "<CMD>Telescope find_files<CR>",                                            mode = { "n"  }, desc = "Find files"},
         { "<leader>tg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", mode = { "n"  }, desc = "Live grep"},
         { "<leader>to", "<CMD>Telescope lsp_document_symbols<CR>",                                  mode = { "n"  }, desc = "Document symbols"},
         { "<leader>ts", "<CMD>Telescope grep_string<CR>",                                           mode = { "n"  }, desc = "Grep string"},
