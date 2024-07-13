@@ -17,7 +17,6 @@ return {
       dashboard.section.buttons.val = {
         dashboard.button("f", " " .. "Find file", "<CMD> Telescope find_files <CR>"),
         dashboard.button("g", " " .. "Live grep", "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>"),
-        dashboard.button("s", " " .. "Grep string", "<CMD> Telescope grep_string <CR>"),
         dashboard.button("p", " " .. "Package manager ", "<CMD> Lazy <CR>"),
         dashboard.button("u", "⟳ " .. "Update packages", "<CMD> Lazy update <CR>"),
         dashboard.button("m", "🖮 " .. "Mapping", "<CMD> Telescope keymaps <CR>"),
