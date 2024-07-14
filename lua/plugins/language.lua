@@ -25,6 +25,10 @@ return {
   opts = {},
 },
 {
+  "lukas-reineke/lsp-format.nvim",
+  opts={}
+},
+{
   'williamboman/mason-lspconfig.nvim',
   dependencies = {
     "Civitasv/cmake-tools.nvim",
