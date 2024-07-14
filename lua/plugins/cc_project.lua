@@ -10,6 +10,7 @@ return {
 		{"<leader>cg", "<CMD>CMakeGenerate<CR>", 					 desc = "Generate"     },
 		{"<leader>cb", "<CMD>CMakeBuild<CR>",		 					 desc = "Build"        },
 		{"<leader>cr", "<CMD>CMakeRun<CR>",			 					 desc = "Run target"   },
+		{"<leader>cd", "<CMD>CMakeDebug<CR>",			 				 desc = "Debug target" },
 		{"<leader>ce", "<CMD>CMakeOpenExecutor<CR>",			 desc = "Open executor"},
 		{"<leader>co", "<CMD>CMakeOpenRunner<CR>",			 	 desc = "Open runner"  },
 		{"<leader>cq", "<CMD>CMakeQuickStart<CR>",			 	 desc = "Quick start"  },
