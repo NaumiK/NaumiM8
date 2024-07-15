@@ -25,7 +25,7 @@ return {
           bg4 = "#55283c",
           green = "#84a695",
           cyan = "#08d3a4",
-          comment = "#4f2a3c",
+          comment = "#b08397",
           sel0 = "#3d1a30",
           orange = "#e08e50",
         },
