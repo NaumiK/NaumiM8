@@ -17,12 +17,19 @@ return {
     },
     opts = {
       cmake_build_directory = "build",
-      cmake_generate_options = { "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" },
+      cmake_generate_options = {
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=1",
+        "-DCMAKE_CXX_COMPILER=clang++",
+        "-DCMAKE_C_COMPILER=clang",
+        "-G Ninja",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        -- "-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      },
     }
   },
   {
     "p00f/clangd_extensions.nvim",
-    ft = { "c", "cpp" },
+    ft = { "c", "cpp", "h", "hh" },
     dependencies = {
       "VonHeikemen/lsp-zero.nvim",
       "neovim/nvim-lspconfig",
@@ -53,5 +60,12 @@ return {
       require("clangd_extensions.inlay_hints").setup_autocmd()
       require("clangd_extensions.inlay_hints").set_inlay_hints()
     end
-  }
+  },
+  {
+    "Badhi/nvim-treesitter-cpp-tools",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event="VeryLazy",
+    config = true,
+    lazy=true,
+}
 }
