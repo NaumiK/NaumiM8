@@ -116,4 +116,37 @@ return {
   {
     "xiyaowong/transparent.nvim"
   },
+  {
+  "rcarriga/nvim-notify",
+  event = "VeryLazy",
+  opts = {
+    timeout = 500,
+    render = "wrapped-compact"
+  }
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      presets = {
+          bottom_search = true,
+          command_palette = true,
+          long_message_to_split = true,
+          inc_rename = false,
+          lsp_doc_border = false,
+        },
+    },
+    keys = {
+      {"<leader>n", "", desc = "Notifications"},
+      {"<leader>nl", function () require("noice").cmd("last") end, desc = "Last message"},
+      {"<leader>nh", function () require("noice").cmd("history") end, desc = "History"},
+      {"<leader>na", function () require("noice").cmd("all") end, desc = "All"},
+      {"<leader>nd", function () require("noice").cmd("dismiss") end, desc = "Dismiss All"},
+      {"<leader>nt", function () require("noice").cmd("pick") end, desc = "Telescope pick"},
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  }
 }

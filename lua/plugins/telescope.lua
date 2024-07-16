@@ -1,13 +1,14 @@
 return {
   "nvim-telescope/telescope.nvim",
   keys = {
-    { "<leader>t",  "",                                                                         desc = "Telescope" },
-    { "<leader>tt", "<CMD>Telescope<CR>",                                                       mode = { "n" },    desc = "Global" },
-    { "<leader>tf", "<CMD>Telescope find_files<CR>",                                            mode = { "n" },    desc = "Find files" },
-    { "<leader>tg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", mode = { "n" },    desc = "Live grep" },
-    { "<leader>to", "<CMD>Telescope lsp_document_symbols<CR>",                                  mode = { "n" },    desc = "Document symbols" },
-    { "<leader>ts", "<CMD>Telescope grep_string<CR>",                                           mode = { "n" },    desc = "Grep string" },
-    { "<leader>tm", "<CMD>Telescope keymaps<CR>",                                               mode = { "n" },    desc = "Keymaps" },
+    { "<leader>t",  "",                                                                              desc = "Telescope" },
+    { "<leader>tt", "<CMD>Telescope<CR>",                                                            mode = { "n" },    desc = "Global" },
+    { "<leader>tf", "<CMD>Telescope find_files<CR>",                                                 mode = { "n" },    desc = "Find files" },
+    { "<leader>tg", function() require('telescope').extensions.live_grep_args.live_grep_args() end,  mode = { "n" },    desc = "Live grep" },
+    { "<leader>tn", function() require('telescope').extensions.notify.notify() end,                  mode = { "n" },    desc = "Notifications" },
+    { "<leader>to", "<CMD>Telescope lsp_document_symbols<CR>",                                       mode = { "n" },    desc = "Document symbols" },
+    { "<leader>ts", "<CMD>Telescope grep_string<CR>",                                                mode = { "n" },    desc = "Grep string" },
+    { "<leader>tm", "<CMD>Telescope keymaps<CR>",                                                    mode = { "n" },    desc = "Keymaps" },
   },
   cmd = {
     "Telescope",
