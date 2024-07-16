@@ -1,9 +1,6 @@
 return {
   {
     "kdheepak/lazygit.nvim",
-    init = function()
-      require("which-key").add { "<leader>g", group = "Git" }
-    end,
     cmd = {
       "LazyGit",
       "LazyGitConfig",
@@ -14,7 +11,10 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    keys = { { "<leader>gi", "<CMD>LazyGit<CR>", desc = "LazyGit" } }
+    keys = {
+      { "<leader>g",  "",                 desc = "Git" },
+      { "<leader>gi", "<CMD>LazyGit<CR>", desc = "LazyGit" },
+    }
   },
   {
     "lewis6991/gitsigns.nvim",

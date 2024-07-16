@@ -10,12 +10,12 @@ return {
       "nvim-telescope/telescope.nvim",
     },
     keys = {
+      { "<leader>l",  "",                       desc = "LSP" },
       { "<leader>lf", "<CMD>LspZeroFormat<CR>", desc = "Formatting", mode = "n" },
-      { "<leader>li", "<CMD>LspInfo<CR>",       desc = "Info",     mode = "n" },
-      { "<leader>ll", "<CMD>LspLog<CR>",        desc = "Log",      mode = "n" },
-      { "<leader>lr", "<CMD>LspRestart<CR>",    desc = "Restart",  mode = "n" },
+      { "<leader>li", "<CMD>LspInfo<CR>",       desc = "Info",       mode = "n" },
+      { "<leader>ll", "<CMD>LspLog<CR>",        desc = "Log",        mode = "n" },
+      { "<leader>lr", "<CMD>LspRestart<CR>",    desc = "Restart",    mode = "n" },
     },
-    init = function() require("which-key").add { "<leader>l", name = "LSP" } end,
     config = function()
       local lsp_zero = require('lsp-zero')
       lsp_zero.on_attach(function(_, bufnr)
@@ -78,6 +78,7 @@ return {
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
+    lazy = true,
     opts = {
       disable_filetype = { "TelescopePrompt", "vim" }
     }

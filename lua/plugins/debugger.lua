@@ -22,6 +22,7 @@ return {
       "mfussenegger/nvim-dap",
     },
     keys = {
+      { "<leader>d",  "",                                       desc = "Debugger" },
       { "<leader>dc", "<CMD>DapContinue<CR>",                   desc = "Continue",          mode = "n" },
       { "<leader>dn", "<CMD>DapStepOver<CR>",                   desc = "Step over",         mode = "n" },
       { "<leader>di", "<CMD>DapStepInto<CR>",                   desc = "Step into",         mode = "n" },
@@ -30,7 +31,6 @@ return {
       { "<leader>du", "<CMD>lua require('dapui').toggle()<CR>", desc = "Toggle ui",         mode = "n" },
     },
     init = function()
-      require("which-key").add { "<leader>d", name = "Debugger" }
       vim.fn.sign_define("DapBreakpoint", { text = "󰏥", texthl = "DapBreakpoint" })
       vim.fn.sign_define("DapBreakpointRejected", { text = "󰏥" })
       vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped" })

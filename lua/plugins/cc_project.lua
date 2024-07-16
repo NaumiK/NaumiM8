@@ -2,10 +2,8 @@ return {
   {
     "Civitasv/cmake-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    init = function()
-      require("which-key").add { "<leader>c", name = "CMake" }
-    end,
     keys = {
+      { "<leader>c",  "",                           desc = "Cmake" },
       { "<leader>cs", "<CMD>CMakeSettings<CR>",     desc = "Settings" },
       { "<leader>cg", "<CMD>CMakeGenerate<CR>",     desc = "Generate" },
       { "<leader>cb", "<CMD>CMakeBuild<CR>",        desc = "Build" },
@@ -64,8 +62,8 @@ return {
   {
     "Badhi/nvim-treesitter-cpp-tools",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event="VeryLazy",
+    event = "VeryLazy",
     config = true,
-    lazy=true,
-}
+    lazy = true,
+  }
 }

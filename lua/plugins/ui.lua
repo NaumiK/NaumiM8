@@ -4,12 +4,12 @@ return {
     version = "*",
     lazy = true,
     keys = {
-      { "<leader>nn", "<CMD>NvimTreeToggle<CR>", mode = { "n" }, desc = "Tree toggle" },
-      { "<leader>nf", "<CMD>NvimTreeFocus<CR>",  mode = { "n" }, desc = "Tree focus" },
+      { "<leader>f",  "",                        desc = "+File tree" },
+      { "<leader>ft", "<CMD>NvimTreeToggle<CR>", mode = { "n" },     desc = "Tree toggle" },
+      { "<leader>ff", "<CMD>NvimTreeFocus<CR>",  mode = { "n" },     desc = "Tree focus" },
 
     },
     cmd = { "NvimTreeOpen", "NvimTreeFocus", "NvimTreeToggle" },
-    init = function() require("which-key").add { "<leader>n", name = "File tree" } end,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "folke/which-key.nvim",
@@ -39,7 +39,6 @@ return {
     },
     init = function()
       vim.g.barbar_auto_setup = false
-      require('which-key').add { "<leader>b", name = "Buffer order" }
     end,
     opts = {},
     lazy = false,
@@ -66,11 +65,11 @@ return {
       -- Close buffer
       { "<A-c>",      "<CMD>BufferClose<CR>",               mode = { "n" } },
       -- Sort buffers
-      { "<leader>b",  name = "Buffer order" },
-      { "<leader>bn", "<CMD>BufferOrderByBufferNumber<CR>", mode = { "n" }, desc = "Number" },
-      { "<leader>bd", "<CMD>BufferOrderByDirectory<CR>",    mode = { "n" }, desc = "Directory" },
-      { "<leader>bl", "<CMD>BufferOrderByLanguage<CR>",     mode = { "n" }, desc = "Language " },
-      { "<leader>bw", "<CMD>BufferOrderByWindowNumber<CR>", mode = { "n" }, desc = "Window" },
+      { "<leader>b",  "",                                   desc = "Buffer order" },
+      { "<leader>bn", "<CMD>BufferOrderByBufferNumber<CR>", mode = { "n" },       desc = "Number" },
+      { "<leader>bd", "<CMD>BufferOrderByDirectory<CR>",    mode = { "n" },       desc = "Directory" },
+      { "<leader>bl", "<CMD>BufferOrderByLanguage<CR>",     mode = { "n" },       desc = "Language " },
+      { "<leader>bw", "<CMD>BufferOrderByWindowNumber<CR>", mode = { "n" },       desc = "Window" },
     },
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
@@ -116,5 +115,5 @@ return {
   },
   {
     "xiyaowong/transparent.nvim"
-  }
+  },
 }
