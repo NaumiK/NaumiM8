@@ -1,6 +1,6 @@
 return {
   { 'iibe/gruvbox-high-contrast',   enabled = false },
-  { "ziontee113/color-picker.nvim", opts = {} },
+  { "ziontee113/color-picker.nvim", cmd = { "PickColor", "PickColorInsert" }, opts = {} },
   {
     "EdenEast/nightfox.nvim",
     opts = {
