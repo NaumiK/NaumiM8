@@ -28,6 +28,56 @@ return {
     end
   },
   {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      "saadparwaiz1/cmp_luasnip",
+      "VonHeikemen/lsp-zero.nvim",
+    },
+    config = function()
+      local cmp = require('cmp')
+      local cmp_action = require('lsp-zero').cmp_action()
+      cmp.setup({
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        mapping = cmp.mapping.preset.insert({
+          ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+          ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+          ['<Tab>'] = cmp_action.luasnip_supertab(),
+          ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+          ['<CR>'] = cmp.mapping.confirm { select = false },
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
+        }),
+        snippet = {
+          expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+          end,
+        },
+        formatting = {
+          fields = { 'menu', 'abbr', 'kind' },
+          format = function(entry, item)
+            local menu_icon = {
+              nvim_lsp = 'λ',
+              luasnip = '⋗',
+              buffer = 'Ω',
+              path = '🖫',
+              nvim_lua = 'Π',
+            }
+            item.menu = menu_icon[entry.source.name]
+            return item
+          end,
+        },
+      })
+    end
+  },
+  {
     'williamboman/mason.nvim',
     opts = {},
   },
@@ -42,7 +92,7 @@ return {
       "VonHeikemen/lsp-zero.nvim"
     },
     opts = {
-      ensure_installed = { "clangd", "lua_ls", "cmake" },
+      ensure_installed = { "clangd", "lua_ls", "cmake", },
       handlers = {
         function(server_name)
           require('lspconfig')[server_name].setup {}
@@ -72,6 +122,11 @@ return {
             }
           }
         end,
+        bashls = function()
+          require('lspconfig').bashls.setup {
+            single_file_support = true
+          }
+        end,
       }
     },
   },
@@ -89,7 +144,7 @@ return {
     config = function()
       require("nvim-treesitter.configs").setup {
         ensure_installed = {
-          "c", "cpp", "lua", "vim", "vimdoc"
+          "c", "cpp", "lua", "vim", "vimdoc", "bash",
         }
       }
     end
