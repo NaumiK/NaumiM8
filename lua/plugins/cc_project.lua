@@ -65,5 +65,18 @@ return {
     event = "VeryLazy",
     config = true,
     lazy = true,
-  }
+  },
+  {
+  "Diogo-ss/42-header.nvim",
+  cmd = { "Stdheader" },
+  opts = {
+    default_map = false,
+    auto_update = true,
+    git = {
+      enabled = true,
+      user_global = true,
+      email_global = true,
+    }
+  },
+}
 }

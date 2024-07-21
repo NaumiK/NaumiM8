@@ -38,8 +38,8 @@ return {
       local cmp_action = require('lsp-zero').cmp_action()
       cmp.setup({
         sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
+          { name = 'luasnip'},
+          { name = 'nvim_lsp'},
         },
         window = {
           completion = cmp.config.window.bordered(),
@@ -48,6 +48,12 @@ return {
         mapping = cmp.mapping.preset.insert({
           ['<C-f>'] = cmp_action.luasnip_jump_forward(),
           ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+          ['<C-l>'] = function ()
+            local ls = require("luasnip")
+            if ls.choice_active then
+              ls.change_choice(1)
+            end
+          end,
           ['<Tab>'] = cmp_action.luasnip_supertab(),
           ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
           ['<CR>'] = cmp.mapping.confirm { select = false },
