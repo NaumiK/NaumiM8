@@ -2,4 +2,6 @@
 require("config.lazy")
 require("config.mappings")
 require("config.settings")
-require("config.clean_shada")
+require("scripts")
+require("config.autocmd")
+require("config.snippet")
