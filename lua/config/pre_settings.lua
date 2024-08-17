@@ -12,4 +12,3 @@ vim.opt.termguicolors = true
 vim.opt.encoding = 'utf8'
 vim.opt.fileencoding = 'utf8'
 
-vim.cmd.colorscheme "carbonfox"
